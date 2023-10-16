@@ -26,32 +26,33 @@ for line in file_to_convert:
                 "z": prop.get("pos_z")
             },
             "eulerAngles": {
-                "x":prop.get("angle_x"),
-                "y":prop.get("angle_y"),
-                "z":prop.get("angle_z")
+                "x": prop.get("angle_x"),
+                "y": prop.get("angle_y"),
+                "z": prop.get("angle_z")
             },
             "localScale": {
-                "x":1.0,
-                "y":1.0,
-                "z":1.0
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
             }
         },
         "PathString": "",
         "Path": [],
         "Name": prop.get("name").replace("/", "#"),
-        "AllowMantle":True,
-        "FadeDistance":50000.0,
-        "RealmID":-1,
-        "ClientSide":False,
-        "Option":0
+        "AllowMantle": True,
+        "FadeDistance": 50000.0,
+        "RealmID": -1,
+        "ClientSide": False,
+        "Option": 0
     }
 
     prop_list.append(prop_normalized)
 
-info = {"Version":"1.0.7","Props":prop_list,"Ziplines":[],"LinkedZiplines":[],"VerticalZipLines":[],"NonVerticalZipLines":[],"SingleDoors":[],"DoubleDoors":[],"HorzDoors":[],"VerticalDoors":[],"JumpTowers":[],"Buttons":[],"Jumppads":[],"LootBins":[],"WeaponRacks":[],"Triggers":[],"BubbleShields":[],"SpawnPoints":[],"NewLocPairs":[],"TextInfoPanels":[],"FuncWindowHints":[],"Sounds":[],"CameraPaths":[],"PlayerSpawns":[],"RespawnableHeals":[],"SpeedBoosts":[],"AnimatedCameras":[]}
+info = {"Version": "1.0.7", "Props": prop_list, "Ziplines": [], "LinkedZiplines": [], "VerticalZipLines": [], "NonVerticalZipLines": [], "SingleDoors": [], "DoubleDoors": [], "HorzDoors": [], "VerticalDoors": [], "JumpTowers": [], "Buttons": [], "Jumppads": [], "LootBins": [
+], "WeaponRacks": [], "Triggers": [], "BubbleShields": [], "SpawnPoints": [], "NewLocPairs": [], "TextInfoPanels": [], "FuncWindowHints": [], "Sounds": [], "CameraPaths": [], "PlayerSpawns": [], "RespawnableHeals": [], "SpeedBoosts": [], "AnimatedCameras": []}
 
 
 with open("converted.json", "w") as file:
-    json.dump(info, file, separators=(',',":"))
+    json.dump(info, file, separators=(',', ":"))
 
 print("Convertion finished...")
