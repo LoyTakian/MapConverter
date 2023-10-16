@@ -1,0 +1,2 @@
+CreateEditorProp( $"mdl/thunderdome/thunderdome_cage_ceiling_256x256_06.rmdl",<19968,7808,8832>,<0,0,0>, true, 8000) 
+CreateEditorProp( $"mdl/thunderdome/thunderdome_cage_ceiling_256x256_06.rmdl",<12928,-19712,10368>,<0,-90,0>, true, 8000) 
