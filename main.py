@@ -5,6 +5,10 @@ file_to_convert = open("to_convert.txt", "r")
 
 prop_list = []
 
+version = input("What version of the Map Editor are you using?\n(This was made for version 1.0.7 and may not work for different versions)\n")
+if version == "":
+    version = "1.0.7"
+
 print("Converting...")
 for line in file_to_convert:
     test = line.split(",")
@@ -48,7 +52,7 @@ for line in file_to_convert:
 
     prop_list.append(prop_normalized)
 
-info = {"Version": "1.0.7", "Props": prop_list, "Ziplines": [], "LinkedZiplines": [], "VerticalZipLines": [], "NonVerticalZipLines": [], "SingleDoors": [], "DoubleDoors": [], "HorzDoors": [], "VerticalDoors": [], "JumpTowers": [], "Buttons": [], "Jumppads": [], "LootBins": [
+info = {"Version": version, "Props": prop_list, "Ziplines": [], "LinkedZiplines": [], "VerticalZipLines": [], "NonVerticalZipLines": [], "SingleDoors": [], "DoubleDoors": [], "HorzDoors": [], "VerticalDoors": [], "JumpTowers": [], "Buttons": [], "Jumppads": [], "LootBins": [
 ], "WeaponRacks": [], "Triggers": [], "BubbleShields": [], "SpawnPoints": [], "NewLocPairs": [], "TextInfoPanels": [], "FuncWindowHints": [], "Sounds": [], "CameraPaths": [], "PlayerSpawns": [], "RespawnableHeals": [], "SpeedBoosts": [], "AnimatedCameras": []}
 
 
