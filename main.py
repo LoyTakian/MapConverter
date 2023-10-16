@@ -17,9 +17,9 @@ for line in file_to_convert:
         "pos_x": float(test[1][1:]),
         "pos_y": float(test[3][:-1]),
         "pos_z": float(test[2]),
-        "angle_x": float(test[5]),
-        "angle_y": float(test[6][:-1]),
-        "angle_z": float(test[4][1:]),
+        "angle_x": float(test[4][1:]),
+        "angle_y": float(test[5]),
+        "angle_z": float(test[6][:-1]),
     }
 
     prop_normalized = {
