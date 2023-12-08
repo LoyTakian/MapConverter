@@ -17,11 +17,11 @@ with open("to_convert.txt", "r") as file_to_convert:
         test = line.split(",")
         prop = {
             "name": test[0][20:-6],
-            "pos_x": float(test[1][1:]),
+            "pos_x": float(test[2]),
             "pos_y": float(test[3][:-1]),
-            "pos_z": float(test[2]),
-            "angle_x": float(test[4][1:]),
-            "angle_y": float(test[5]),
+            "pos_z": -float(test[1][1:]) if float(test[1][1:]) > 0 else abs(float(test[1][1:])),
+            "angle_x": -float(test[4][1:]) if float(test[4][1:]) > 0 else abs(float(test[4][1:])),
+            "angle_y": -float(test[5]) if float(test[5]) > 0 else abs(float(test[5])),
             "angle_z": float(test[6][:-1]),
         }
 
