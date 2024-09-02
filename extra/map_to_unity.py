@@ -1,6 +1,5 @@
 import json
 
-# prop = MapEditor_CreateProp( $"mdl/fx/energy_ring_edge.rmdl", < -30489.11, -2053.89, -30520 >, < 0, -90, 0 >, true, 50000, -1, 10 )
 props = []
 props_json = []
 with open("prop_list.txt", "r") as f:
