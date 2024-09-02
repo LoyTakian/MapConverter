@@ -1,0 +1,1 @@
+prop = MapEditor_CreateProp( $"mdl/timeshift/timeshift_bench_01.rmdl", < -16.86, 22.14, 42.47 >, < 0, 105.0002, 0 >, true, 200, -1, 1 )
