@@ -8,64 +8,72 @@ with open("prop_list.txt", "r") as f:
 
 
 for prop in props:
-    # removes useless text
-    prop_info = prop[27:-2]
+    if prop[:5] == "prop.":
+        if not props_json[-1]["Options"]:
+            props_json[-1]["Options"] = prop[5:-1]
+        else:
+            props_json[-1]["Options"] = (
+                props_json[-1]["Options"].strip("\n") + f"\n{prop[5:-1]}"
+            )
 
-    # separate info
-    prop_info = prop_info.split(",")
+    else:
+        prop_info = prop[27:-2]
 
-    if len(prop_info) != 11:
-        print(
-            f"The following prop was ignored for not following the pattern:\n{prop}\n"
-        )
-        continue
+        prop_info = prop_info.split(",")
 
-    prop_name = prop_info[0][1:-6].replace("/", "#")
+        if len(prop_info) != 11:
+            if len(prop_info) > 1:
+                print(
+                    f"The following prop was ignored for not following the pattern:\n{prop} -> {len(prop_info)}\n"
+                )
+            continue
 
-    prop_location = {
-        "z": prop_info[1].replace("<", ""),
-        "x": prop_info[2],
-        "y": prop_info[3].replace(">", ""),
-    }
-    prop_rotation = {
-        "x": prop_info[4].replace("<", ""),
-        "y": prop_info[5],
-        "z": prop_info[6].replace(">", ""),
-    }
-    prop_mantle = True if prop_info[7] == "true" else False
-    prop_fade_distance = prop_info[8]
-    prop_realm_id = prop_info[9]
-    prop_scale = prop_info[10]
+        prop_name = prop_info[0][1:-6].replace("/", "#")
 
-    prop = {
-        "TransformData": {
-            "position": {
-                "x": round(float(prop_location.get("x")), 2),
-                "y": round(float(prop_location.get("y")), 2),
-                "z": round(float(prop_location.get("z")), 2) * -1,
+        prop_location = {
+            "z": prop_info[1].replace("<", ""),
+            "x": prop_info[2],
+            "y": prop_info[3].replace(">", ""),
+        }
+        prop_rotation = {
+            "x": prop_info[4].replace("<", ""),
+            "y": prop_info[5],
+            "z": prop_info[6].replace(">", ""),
+        }
+        prop_mantle = True if prop_info[7] == "true" else False
+        prop_fade_distance = prop_info[8]
+        prop_realm_id = prop_info[9]
+        prop_scale = prop_info[10]
+
+        prop = {
+            "TransformData": {
+                "position": {
+                    "x": round(float(prop_location.get("x")), 2),
+                    "y": round(float(prop_location.get("y")), 2),
+                    "z": round(float(prop_location.get("z")), 2) * -1,
+                },
+                "eulerAngles": {
+                    "x": round(float(prop_rotation.get("x")), 2) * -1,
+                    "y": round(float(prop_rotation.get("y")), 2) * -1,
+                    "z": round(float(prop_rotation.get("z")), 2),
+                },
+                "localScale": {
+                    "x": round(float(prop_scale), 2),
+                    "y": round(float(prop_scale), 2),
+                    "z": round(float(prop_scale), 2),
+                },
             },
-            "eulerAngles": {
-                "x": round(float(prop_rotation.get("x")), 2) * -1,
-                "y": round(float(prop_rotation.get("y")), 2) * -1,
-                "z": round(float(prop_rotation.get("z")), 2),
-            },
-            "localScale": {
-                "x": round(float(prop_scale), 2),
-                "y": round(float(prop_scale), 2),
-                "z": round(float(prop_scale), 2),
-            },
-        },
-        "PathString": "",
-        "Path": [],
-        "Name": prop_name,
-        "AllowMantle": prop_mantle,
-        "FadeDistance": float(prop_fade_distance),
-        "RealmID": -1,
-        "ClientSide": False,
-        "Options": "",
-    }
+            "PathString": "",
+            "Path": [],
+            "Name": prop_name,
+            "AllowMantle": prop_mantle,
+            "FadeDistance": float(prop_fade_distance),
+            "RealmID": -1,
+            "ClientSide": False,
+            "Options": "",
+        }
 
-    props_json.append(prop)
+        props_json.append(prop)
 
 with open("props.json", "w") as f:
     json.dump(props_json, f)
