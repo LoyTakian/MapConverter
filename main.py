@@ -15,9 +15,10 @@ if version == "":
 print("Converting...")
 with open("to_convert.txt", "r") as file_to_convert:
     for line in file_to_convert:
+        line = line.replace(" ", "")
         test = line.split(",")
         prop = {
-            "name": test[0][20:-6],
+            "name": test[0][23:-6],
             "pos_x": float(test[2]),
             "pos_y": float(test[3][:-1]),
             "pos_z": float(test[1][1:]) * -1,
