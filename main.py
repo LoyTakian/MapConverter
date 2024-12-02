@@ -39,7 +39,7 @@ with open("to_convert.txt", "r") as file_to_convert:
                     "y": prop.get("angle_y"),
                     "z": prop.get("angle_z"),
                 },
-                "localScale": {"x": 1.0, "y": 1.0, "z": 1.0},
+                "localScale": {"x": float(test[-1][0:-2]), "y": float(test[-1][0:-2]), "z": float(test[-1][0:-2])},
             },
             "PathString": "",
             "Path": [],
